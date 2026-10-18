@@ -1,10 +1,10 @@
 # AGENTS.md
 
-This file provides guidance to AI coding agents when working with code in this repository.
+本文件指导代码代理在本仓库内工作；按当前任务读取对应组件说明。
 
 ## 项目概述
 
-Stellar 是 Shizuku 的深度定制分支，通过 ADB 或 Root 权限为应用提供系统级 API 框架。100% Kotlin，内置 Shizuku 兼容层。
+Stellar 是 Shizuku 的深度定制分支，通过 ADB 或 Root 权限为应用提供系统级 API 框架。业务代码主要使用 Kotlin，包含 JNI 原生组件，并内置 Shizuku 兼容层。
 
 ## 构建命令
 
@@ -103,14 +103,12 @@ shizuku/     → Shizuku 兼容层
 - `monitor/PackageMonitor`：包变更监听
 - `ext/FollowStellarStartupExt`：跟随服务启动命令执行
 
-## 技术栈
+## 技术栈与版本来源
 
-- compileSdk 36, minSdk 24, targetSdk 36, JVM 21
-- AGP 8.10.1, Kotlin 2.2.0, Compose Compiler 2.1.21, KSP 2.2.0-2.0.2
-- Compose BOM 2026.01.01, Navigation Compose 2.9.7
-- Room 2.7.1（manager 本地数据库）
-- NDK 29 + CMake 3.22.1+（JNI 组件）
-- 版本目录：各模块独立 `*.versions.toml`（manager/server/api/demo），根目录 `gradle/libs.versions.toml` 管理 hidden-api/refine
+- SDK、JVM、NDK 及插件配置以根 `build.gradle`、`settings.gradle` 和对应模块构建文件为准。
+- Manager 依赖见 `manager/manager.versions.toml`，Server 依赖见 `server/server.versions.toml`。
+- API 与示例依赖见 `api/api.versions.toml`、`api/demo/demo.versions.toml`；根 `gradle/libs.versions.toml` 管理共享依赖。
+- 只在涉及对应依赖或模块时读取，不在本文重复维护易漂移的版本表。
 
 ## 版本号规则
 
